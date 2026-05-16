@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MySQL – هەموو کۆدەکان</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); min-height:100vh; padding:30px; direction:rtl; }
+.container { max-width:1100px; margin:0 auto; }
+.header { text-align:center; color:white; margin-bottom:30px; }
+.header h1 { font-size:2.2em; text-shadow:2px 2px 4px rgba(0,0,0,0.3); margin-bottom:8px; }
+.header p  { font-size:1.05em; opacity:0.9; }
+.card { background:white; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,0.18); }
+.card-title { background:linear-gradient(135deg,#e0f2fe,#bae6fd); padding:13px 18px; border-radius:8px; margin-bottom:18px; font-size:17px; font-weight:bold; color:#0c4a6e; }
+.code-box { background:#1e1e1e; border-radius:10px; overflow:hidden; border:1px solid #333; display:flex; direction:ltr; }
+.line-numbers { background:#2d2d2d; border-left:4px solid #5cb85c; padding:18px 0; min-width:46px; text-align:center; font-family:'Consolas','Monaco',monospace; font-size:14px; color:#858585; line-height:1.75; user-select:none; flex-shrink:0; }
+.line-numbers span { display:block; padding:0 8px; }
+.code-content { padding:18px 22px; overflow-x:auto; flex:1; }
+.code-content pre { margin:0; font-family:'Consolas','Monaco',monospace; line-height:1.75; white-space:pre; color:#e2e8f0; font-size:9.5pt; }
+.kw  { color:#d4a574; font-weight:700; }
+.dt  { color:#bb86fc; font-weight:700; }
+.con { color:#4fc3f7; font-weight:600; }
+.num { color:#b5cea8; }
+.str { color:#ce9178; }
+.txt { color:#e2e8f0; }
+.cmt { color:#6a9955; font-style:italic; }
+.sep { color:#555; font-style:italic; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>📚 هەموو کۆدەکانی MySQL</h1>
+  <p>Learn MySQL – All SQL Commands</p>
+</div>
+
+<div class="card">
+
+  <!-- بۆکسی ١: یاساکان -->
+  <div class="card-title">📋 یاسا — هەموو فەرمانەکان (کۆدی ١ تا ٩)</div>
+  <div class="code-box">
+    <div class="line-numbers">
+      <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+      <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+      <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+      <span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
+      <span>41</span><span>42</span><span>43</span><span>44</span><span>45</span><span>46</span><span>47</span><span>48</span><span>49</span><span>50</span>
+      <span>51</span><span>52</span><span>53</span><span>54</span><span>55</span><span>56</span><span>57</span><span>58</span><span>59</span><span>60</span>
+      <span>61</span><span>62</span><span>63</span>
+    </div>
+    <div class="code-content"><pre><span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- کۆدی ١ – CREATE DATABASE</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- دروستکردنی بنکەی زانیاری نوێ</span>
+<span class="kw">CREATE DATABASE</span> <span class="txt">database_name</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- کۆدی ٢ – DROP DATABASE</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- سڕینەوەی بنکەی زانیاری بە تەواوی</span>
+<span class="kw">DROP DATABASE</span> <span class="txt">databasename</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- کۆدی ٣ – SELECT</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- هەموو ستوونەکان هەڵبژێرە</span>
+<span class="kw">SELECT</span> <span class="txt">*</span> <span class="kw">FROM</span> <span class="txt">table_name</span><span class="txt">;</span>
+<span class="cmt">-- ستوونی دیاریکراو هەڵبژێرە</span>
+<span class="kw">SELECT</span> <span class="txt">column_names</span> <span class="kw">FROM</span> <span class="txt">table_name</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- کۆدی ٤ – WHERE</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- تەنها ئەو ڕیزانە پیشان بدە کە مەرجەکە تێدایەتەوە</span>
+<span class="kw">SELECT</span> <span class="txt">*</span> <span class="kw">FROM</span> <span class="txt">Customers</span>
+<span class="con">WHERE</span> <span class="txt">name</span> <span class="txt">=</span> <span class="str">'ali'</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- کۆدی ٥ – UPDATE</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- گۆڕینی ستوونێک یان چەند ستوون لە خشتەیەکدا</span>
+<span class="kw">UPDATE</span> <span class="txt">table_name</span>
+<span class="kw">SET</span> <span class="txt">column1</span> <span class="txt">=</span> <span class="txt">value1</span><span class="txt">,</span> <span class="txt">column2</span> <span class="txt">=</span> <span class="txt">value2</span>
+<span class="con">WHERE</span> <span class="txt">condition</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- کۆدی ٦ – DELETE</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- سڕینەوەی ڕیزی دیاریکراو بە مەرج</span>
+<span class="kw">DELETE FROM</span> <span class="txt">table_name</span>
+<span class="con">WHERE</span> <span class="txt">condition</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- کۆدی ٧ – INSERT INTO</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- زیادکردنی ڕیزی نوێ بۆ خشتەیەک</span>
+<span class="kw">INSERT INTO</span> <span class="txt">table_name</span> <span class="txt">(</span><span class="txt">column1</span><span class="txt">,</span> <span class="txt">column2</span><span class="txt">,</span> <span class="txt">column3</span><span class="txt">)</span>
+<span class="kw">VALUES</span> <span class="txt">(</span><span class="txt">value1</span><span class="txt">,</span> <span class="txt">value2</span><span class="txt">,</span> <span class="txt">value3</span><span class="txt">);</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- کۆدی ٨ – CREATE TABLE & ALTER TABLE</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- دروستکردنی خشتەی نوێ</span>
+<span class="kw">CREATE TABLE</span> <span class="txt">table_name</span> <span class="txt">(</span>
+  <span class="txt">column1</span> <span class="dt">datatype</span> <span class="con">constraint</span><span class="txt">,</span>
+  <span class="txt">column2</span> <span class="dt">datatype</span> <span class="con">constraint</span>
+<span class="txt">);</span>
+<span class="cmt">-- زیادکردنی ستوونی نوێ</span>
+<span class="kw">ALTER TABLE</span> <span class="txt">table_name</span> <span class="kw">ADD</span> <span class="txt">column_name</span> <span class="dt">datatype</span><span class="txt">;</span>
+<span class="cmt">-- سڕینەوەی ستوون</span>
+<span class="kw">ALTER TABLE</span> <span class="txt">table_name</span> <span class="kw">DROP COLUMN</span> <span class="txt">column_name</span><span class="txt">;</span>
+<span class="cmt">-- گۆڕینی ناوی ستوون</span>
+<span class="kw">ALTER TABLE</span> <span class="txt">table_name</span> <span class="kw">RENAME COLUMN</span> <span class="txt">old_name</span> <span class="kw">TO</span> <span class="txt">new_name</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- کۆدی ٩ – MODIFY, ADD CONSTRAINT & RENAME TABLE</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- گۆڕینی جۆری داتا یان سنووری ستوون</span>
+<span class="kw">ALTER TABLE</span> <span class="txt">table_name</span> <span class="kw">MODIFY</span> <span class="txt">column_name</span> <span class="dt">new_datatype</span> <span class="con">constraint</span><span class="txt">;</span>
+<span class="cmt">-- زیادکردنی سنووری نوێ</span>
+<span class="kw">ALTER TABLE</span> <span class="txt">table_name</span> <span class="kw">ADD CONSTRAINT</span> <span class="txt">constraint_name</span> <span class="txt">constraint_definition</span><span class="txt">;</span>
+<span class="cmt">-- گۆڕینی ناوی خشتە</span>
+<span class="kw">ALTER TABLE</span> <span class="txt">table_name</span> <span class="kw">RENAME TO</span> <span class="txt">new_table_name</span><span class="txt">;</span></pre></div>
+  </div>
+
+  <!-- بۆکسی ٢: نموونەی ڕاستەقینە -->
+  <div style="margin-top:28px;">
+    <div class="card-title">✅ نموونەی ڕاستەقینە — هەموو فەرمانەکان بە نموونە (small)</div>
+    <div class="code-box">
+      <div class="line-numbers">
+        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+        <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span>
+        <span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
+        <span>41</span><span>42</span><span>43</span><span>44</span><span>45</span><span>46</span><span>47</span><span>48</span><span>49</span><span>50</span>
+        <span>51</span><span>52</span><span>53</span><span>54</span><span>55</span><span>56</span><span>57</span><span>58</span><span>59</span><span>60</span>
+        <span>61</span><span>62</span><span>63</span><span>64</span><span>65</span><span>66</span><span>67</span><span>68</span>
+      </div>
+      <div class="code-content"><pre><span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- كۆدی ١ – create database</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- دروستكردنی بنكەی زانیاری نوێ</span>
+<span class="kw">create database</span> <span class="txt">emp</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- كۆدی ٢ – drop database</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- سڕینەوەی بنكەی زانیاری بە تەواوی</span>
+<span class="kw">drop database</span> <span class="txt">emp</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- كۆدی ٣ – select</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- هەموو ستوونەكان هەڵبژێرە</span>
+<span class="kw">select</span> <span class="txt">*</span> <span class="kw">from</span> <span class="txt">emp</span><span class="txt">;</span>
+<span class="cmt">-- ستوونی دیاریكراو هەڵبژێرە</span>
+<span class="kw">select</span> <span class="txt">id</span><span class="txt">,</span> <span class="txt">name</span> <span class="kw">from</span> <span class="txt">emp</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- كۆدی ٤ – where</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- تەنها ئەو ڕیزانە پیشان بدە كە مەرجەكە تێدایەتەوە</span>
+<span class="kw">select</span> <span class="txt">*</span> <span class="kw">from</span> <span class="txt">emp</span>
+<span class="con">where</span> <span class="txt">name</span> <span class="txt">=</span> <span class="str">'ali'</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- كۆدی ٥ – update</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- گۆڕینی ستوونێك یان چەند ستوون لە خشتەیەكدا</span>
+<span class="kw">update</span> <span class="txt">emp</span>
+<span class="kw">set</span> <span class="txt">salary</span> <span class="txt">=</span> <span class="num">500</span><span class="txt">,</span> <span class="txt">city</span> <span class="txt">=</span> <span class="str">'kalar'</span>
+<span class="con">where</span> <span class="txt">id</span> <span class="txt">=</span> <span class="num">1</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- كۆدی ٦ – delete</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- سڕینەوەی ڕیزی دیاریكراو بە مەرج</span>
+<span class="kw">delete from</span> <span class="txt">emp</span>
+<span class="con">where</span> <span class="txt">id</span> <span class="txt">=</span> <span class="num">3</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- كۆدی ٧ – insert into</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- زیادكردنی ڕیزی نوێ بۆ خشتەیەك</span>
+<span class="kw">insert into</span> <span class="txt">emp</span> <span class="txt">(</span><span class="txt">id</span><span class="txt">,</span> <span class="txt">name</span><span class="txt">,</span> <span class="txt">salary</span><span class="txt">)</span>
+<span class="kw">values</span> <span class="txt">(</span><span class="num">1</span><span class="txt">,</span> <span class="str">'hana'</span><span class="txt">,</span> <span class="num">300</span><span class="txt">);</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- كۆدی ٨ – create table & alter table</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- دروستكردنی خشتەی نوێ</span>
+<span class="kw">create table</span> <span class="txt">emp</span> <span class="txt">(</span>
+  <span class="txt">id</span> <span class="dt">int</span><span class="txt">,</span>
+  <span class="txt">name</span> <span class="dt">varchar</span><span class="txt">(</span><span class="num">50</span><span class="txt">),</span>
+  <span class="txt">salary</span> <span class="dt">int</span>
+<span class="txt">);</span>
+<span class="cmt">-- زیادكردنی ستوونی نوێ</span>
+<span class="kw">alter table</span> <span class="txt">emp</span> <span class="kw">add</span> <span class="txt">email</span> <span class="dt">varchar</span><span class="txt">(</span><span class="num">100</span><span class="txt">);</span>
+<span class="cmt">-- سڕینەوەی ستوون</span>
+<span class="kw">alter table</span> <span class="txt">emp</span> <span class="kw">drop column</span> <span class="txt">email</span><span class="txt">;</span>
+<span class="cmt">-- گۆڕینی ناوی ستوون</span>
+<span class="kw">alter table</span> <span class="txt">emp</span> <span class="kw">rename column</span> <span class="txt">name</span> <span class="kw">to</span> <span class="txt">fullname</span><span class="txt">;</span>
+
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="sep">-- كۆدی ٩ – modify, add constraint & rename table</span>
+<span class="sep">-- ══════════════════════════════════════════</span>
+<span class="cmt">-- گۆڕینی جۆری داتا یان سنووری ستوون</span>
+<span class="kw">alter table</span> <span class="txt">emp</span> <span class="kw">modify</span> <span class="txt">name</span> <span class="dt">varchar</span><span class="txt">(</span><span class="num">100</span><span class="txt">)</span> <span class="con">not null</span><span class="txt">;</span>
+<span class="cmt">-- زیادكردنی سنووری نوێ</span>
+<span class="kw">alter table</span> <span class="txt">emp</span> <span class="kw">add constraint</span> <span class="txt">pk_id</span> <span class="kw">primary key</span> <span class="txt">(</span><span class="txt">id</span><span class="txt">);</span>
+<span class="cmt">-- گۆڕینی ناوی خشتە</span>
+<span class="kw">alter table</span> <span class="txt">emp</span> <span class="kw">rename to</span> <span class="txt">employees</span><span class="txt">;</span></pre></div>
+    </div>
+  </div>
+
+</div><!-- end card -->
+</div><!-- end container -->
+</body>
+</html>
